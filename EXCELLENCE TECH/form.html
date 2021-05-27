@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script>
+    function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+// Defining a function to validate form 
+function validateForm() {
+    // Retrieving the values of form elements 
+     var name = document.vijay.name.value;
+    
+    
+	// Defining error variables with a default value
+    var nameErr = true;
+    
+    // Validate name
+    if(name == "") {
+        printError("nameErr", "Please enter your name");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("nameErr", "Please enter a valid name");
+        } else {
+            printError("nameErr", "");
+            nameErr = false;
+        }
+    }
+    
+
+    
+
+    function deleteData() {
+        if(!document.getElementById('Delete').checked){
+            alert('Checkbox not checked');
+            return false;
+        }
+</script>
+    </head>
+    <body>
+<form name="vijay" onsubmit="return validateForm()">
+    <div class="row"> 
+        <label>FIRSTName</label>
+        <input type="text" name="firstname">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="row">
+        <label></label>
+        <input type="checkbox" name="Delete" value="Delete" id="Delete">
+<input type="button" value="Delete" name="delBtn" id="delBtn" onclick="deleteData()">
+    <!--<input type="checkbox" name="checkme" />-->
+    <div class="error" id="delBtn"></div>
+</div>
+<div class="row">
+    <input type="submit" value="submit"/>
+</div>
+ </form>
+</body>
+ </html>
